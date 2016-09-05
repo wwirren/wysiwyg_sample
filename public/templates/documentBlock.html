@@ -1,0 +1,26 @@
+<div ng-controller="MainCtrl">
+    <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" ng-click="addNewDocBlockModal.dismiss();">&times;</button>
+        <h4 class="modal-title">Add new block</h4>
+
+    </div>
+    <div class="modal-body">
+        <div class="new-bl">
+            <div data-editable ng-bind-html="tdoc.header">
+                <!--<div ng-bind-html="tdoc.header">-->
+
+                <!--</div>-->
+            </div>
+            <div data-editable ng-bind-html="tdoc.content">
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="addNewDocBlockModal.dismiss('cancel');">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="addNewUser.$invalid">Add block</button>
+    </div>
+</div>

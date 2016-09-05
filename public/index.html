@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="build/content-tools.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+
+<!-- Content style -->
+<style type="text/css">
+    [data-name="main-content"] {
+        background: #fff url("img/logo.png") no-repeat;
+        background-position:  95% 3%;
+        min-height: 1030px;
+        padding: 100px 50px;
+        border: 1px solid grey;
+        margin: 50px;
+        box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.16); 
+    }
+    [data-name="main-content"]:first-child {
+        margin-top: 70px;
+    }
+    [data-name="main-content"].document__title-list table {
+        text-align: left;
+        margin-top: 50px;
+    }
+    [data-name="main-content"].document__title-list table td:first-child {
+        width: 30%;
+        font-weight: bold;
+    }
+    .i-panel {
+        position: fixed;
+        width: 24%;
+        margin-top: 70px;
+        background: #fff;
+        padding: 20px;
+        border-left: 1px solid grey;
+        border-top: 1px solid grey;
+        box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.16);
+    }
+    .tab-pane {
+        margin-top: 20px;
+    }
+    .navbar-default {
+        box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.16);
+        border-bottom: 1px solid grey;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .navbar-brand img{
+        max-width: 115px;
+    }
+
+</style>
+
+<body style="background: #ccc;" ng-controller="MainCtrl">
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="img/logo.png"></a><p class="navbar-text">PROPOSAL</p>
+                </div>
+        
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">File<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Save</a></li>
+                                <li><a href="#">Save Us</a></li>
+                                <li><a href="#">Open</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Navigation<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-attr="ololo ololo2">Title</a></li>
+                                <li><a href="#" data-attr="ololo ololo2">Introduction</a></li>
+                                <li><a href="#">Technical proposal</a></li>
+                                <li><a href="#">Budgetary proposal</a></li>
+                                <li><a href="#">About ScienceSoft</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container-fluid">
+            
+            <!-- DOCUMENT AREA -->
+            <div class="row">
+                <div class="col-md-9">
+
+                    <div class="document">
+                        <div data-editable data-name="main-content" class="document__title-list text-center">
+                            
+                            <h1>{{header}}</h1>
+                            <h3>PROPOSAL</h3>
+                            
+                            <table class="table table-hover table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>Customer</td>
+                                        <td>{{mainTitleCustomer}}</td>
+                                    </tr>  
+                                    <tr>  
+                                        <td>Customer contact person</td>
+                                        <td>{{mainTitleCustomerContanct}}</td>
+                                    </tr>  
+                                    <tr>
+                                        <td>ScienceSoft contact person</td>
+                                        <td>{{mainTitleScnsContact}}</td>
+                                    </tr>  
+                                    <tr>
+                                        <td>Proposal date</td>
+                                        <td>{{mainTitleProposalDate | date: "MMM d, y "}}</td>
+                                    </tr>  
+                                    <tr>    
+                                        <td>Valid date</td>
+                                        <td>{{mainTitleProposalDateValid | date: "MMM d, y "}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                         <div data-editable data-name="main-content">
+                            <blockquote>
+                                Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.
+                            </blockquote>
+                            <p>John F. Woods</p>
+                        </div>
+                    </div>
+                </div><!-- col -->
+
+                <!-- SIDEBAR PANEL -->
+                <div class="col-md-3" style="padding-right: 0;">
+                    <div class="i-panel" ng-class="{'fixed' : document.body.scrollTop > 0}">
+
+                        <div class="i-panel__header text-center">
+                            <h3>Setup</h3>
+                        </div>
+
+                        <div class="i-panel__body">
+                              <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main info</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Add used block</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <!-- OPTIONS LIST-->
+                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-default">
+                                            <!-- TITLE LIST OPTIONS HEADER-->
+                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Title list options
+                                                    </a>
+                                                </h4>
+                                            </div>
+
+                                            <!-- TITLE LIST OPTIONS -->
+                                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body">
+                                                   <div class="i-panel_title-list">
+
+                                                        <!-- Title -->
+                                                        <div class="form-group">
+                                                            <label for="main-title">Main title</label>
+                                                            <input type="text" class="form-control" id="main-title" ng-model="mainTitle" placeholder="Type project title">
+                                                            </input>
+                                                        </div>
+
+                                                        <!-- Customer -->
+                                                        <div class="form-group">
+                                                            <label for="main-title">Customer</label>
+                                                            <input type="text" class="form-control" id="main-title" ng-model="mainTitleCustomer" placeholder="Customer name">
+                                                            </input>
+                                                        </div>
+
+                                                        <!-- Customer contact persone-->
+                                                        <div class="form-group">
+                                                            <label for="main-title">Customer contact persone</label>
+                                                            <textarea type="text" class="form-control" id="main-title" ng-model="mainTitleCustomerContanct" placeholder="Customer contact persone">
+                                                            </textarea>
+                                                        </div>
+
+                                                        <!-- ScienceSoft contact person-->
+                                                        <div class="form-group">
+                                                            <label for="main-title">ScienceSoft contact person</label>
+                                                            <textarea type="text" class="form-control" id="main-title" ng-model="mainTitleScnsContact" placeholder="ScienceSoft contact person">
+                                                            </textarea>
+                                                        </div>
+
+                                                        <!-- Proposal date-->
+                                                        <div class="form-group">
+                                                            <label for="main-title">Proposal date</label>
+                                                            <input type="date" class="form-control" id="main-title" ng-model="mainTitleProposalDate" placeholder="mm.dd.yy">
+                                                            </tinput>
+                                                        </div>
+
+                                                        <!-- Proposal date-->
+                                                        <div class="form-group">
+                                                            <label for="main-title">Valid date</label>
+                                                            <input type="date" class="form-control" id="main-title" ng-model="mainTitleProposalDateValid" placeholder="mm.dd.yy">
+                                                            </tinput>
+                                                        </div>
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <!-- TAB 2 -->
+                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                    <form class="search-block form-inline" role="search">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="search" placeholder="Search">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Search</button>
+                                    </form>
+                                    <div class="serch-result">
+                                        <div class="search-result__document" id="document-{{$index + 1}}" ng-repeat="doc in documents">
+                                            <h3>{{doc.header}}</h3>
+                                            <ul>
+                                                <!--<li ng-repeat="bl in documents.bl"><a href="" ng-click="openDocBlockModal(doc.title)">{{doc.title.header}}</a></li>-->
+                                                <li><a href="" ng-click="openDocBlockModal(doc.title)">{{doc.title.header}}</a></li>
+                                                <li><a href="" ng-click="openDocBlockModal(doc.contents)">{{doc.contents.header}}</a></li>
+                                                <li><a href="" ng-click="openDocBlockModal(doc.introduction)">{{doc.introduction.header}}</a></li>
+
+                                                <li><a href="" ng-click="openDocBlockModal(doc.technicalProposal)">{{doc.technicalProposal.header}}</a></li>
+                                                <li><a href="" ng-click="openDocBlockModal(doc.comercialProposal)">{{doc.comercialProposal.header}}</a></li>
+                                                <li><a href="" ng-click="openDocBlockModal(doc.aboutScnsoft)">{{doc.aboutScnsoft.header}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div><!-- col -->
+            </div><!-- row -->
+           
+        </div><!-- container -->
+    </section>
+    <section class="side-bar">
+        
+    </section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/factory.js"></script>
+    <script type="text/javascript" src="js/service.js"></script>
+
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-custom-tpls-2.1.3.min.js"></script>
+
+    <script src="build/content-tools.min.js"></script>
+    <!-- <script src="build/editor.js"></script> -->
+    <script type="text/javascript">
+
+        // Editor
+        window.addEventListener('load', function() {
+            var editor;
+            editor = ContentTools.EditorApp.get();
+            editor.init('*[data-editable]', 'data-name');
+            editor.addEventListener('saved', function (ev) {
+            var name, payload, regions, xhr;
+            // Check that something changed
+            regions = ev.detail().regions;
+            if (Object.keys(regions).length == 0) {
+                return;
+            }
+             // Set the editor as busy while we save our changes
+            this.busy(true);
+
+            // Collect the contents of each region into a FormData instance
+            payload = new FormData();
+            for (name in regions) {
+                if (regions.hasOwnProperty(name)) {
+                    payload.append(name, regions[name]);
+                    console.log(payload);
+                    ///new-bl
+                }
+            }
+            // Send the update content to the server to be saved
+            function onStateChange(ev) {
+                // Check if the request is finished
+                if (ev.target.readyState == 4) {
+                    editor.busy(false);
+                    if (ev.target.status == '200') {
+                        // Save was successful, notify the user with a flash
+                        new ContentTools.FlashUI('ok');
+                    } else {
+                        // Save failed, notify the user with a flash
+                        new ContentTools.FlashUI('no');
+                    }
+                }
+            };
+
+            xhr = new XMLHttpRequest();
+            xhr.addEventListener('readystatechange', onStateChange);
+            xhr.open('POST', '/save-my-page');
+            xhr.send(payload);
+        });
+    });
+    </script>
+</body>
+</html>
